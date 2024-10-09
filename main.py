@@ -218,17 +218,27 @@ running = True
 
 while running:
     screen.fill((0, 0, 0))
-    font = pygame.font.SysFont('Calibri', 29, True, False)
+    font = pygame.font.SysFont('Rog_Fonts', 29, False, False)
     text = font.render(
-        "Щёлкните мышкой,", True, (230, 180, 230))
+        "Click your mouse", True, (230, 180, 230))
     place = text.get_rect(
-        center=(200, 150))
+        center=(190, 150))
     screen.blit(text, place)
     text2 = font.render(
-        "чтобы начать", True, (230, 180, 230))
+        "to start a game.", True, (230, 180, 230))
     place2 = text.get_rect(
-        center=(240, 200))
+        center=(230, 200))
     screen.blit(text2, place2)
+    text3 = font.render(
+        "Arrows control", True, (230, 180, 230))
+    place3 = text.get_rect(
+        center=(190, 270))
+    screen.blit(text3, place3)
+    text4 = font.render(
+        "Up - rolling.", True, (230, 180, 230))
+    place4 = text.get_rect(
+        center=(320, 320))
+    screen.blit(text4, place4)
 
     pygame.display.update()
     for event in pygame.event.get():
@@ -306,27 +316,33 @@ while running:
                                                   game.y + game.zoom * (i + game.figure.y) + 1,
                                                   game.zoom - 2, game.zoom - 2])
 
-                font = pygame.font.SysFont('Calibri', 30, True, False)
+                font = pygame.font.SysFont('Rog_Fonts', 30, False, False)
 
-                font1 = pygame.font.SysFont('Calibri', 30, True, False)
+                font1 = pygame.font.SysFont('Rog_Fonts', 30, False, False)
 
                 text = font.render("" + str(game.score), True, WHITE)
 
-                text_game_over = font1.render("            Игра окончена", True, WHITE)
+                text_game_over = font1.render("        Game over", True, WHITE)
 
-                text_game_over1 = font1.render("             Нажмите ESC", True, WHITE)
+                text_game_over1 = font1.render("        Press ESC", True, WHITE)
+
+                text_game_over2 = font1.render("        Result - ", True, WHITE)
+
+                text_game_over3 = font1.render(str(game.score), True, WHITE)
 
                 screen.blit(text, [195, 15])
 
                 if game.state == "game_over":
+
                     pygame.draw.rect(screen, GRAY2,
-                                     (70, 180, 260, 190))
+                                     (70, 180, 260, 240))
                     screen.blit(text_game_over, [20, 220])
                     screen.blit(text_game_over1, [25, 285])
+                    screen.blit(text_game_over2, [18, 350])
+                    screen.blit(text_game_over3, [280, 350])
 
                 pygame.display.flip()
 
                 clock.tick(fps)
 
             pygame.quit()
-
